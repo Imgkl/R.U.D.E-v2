@@ -44,6 +44,7 @@ dependencies:
   lit_firebase_auth: ^0.2.3
   animations: ^1.1.2
   shared_preferences: ^0.5.10
+  wiredash: ^0.2.0
 
 dev_dependencies:
   flutter_test:

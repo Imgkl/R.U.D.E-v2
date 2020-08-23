@@ -4,7 +4,9 @@ import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:rude/screens/app/app.dart';
 import 'package:rude/screens/auth/auth.dart';
 import 'package:rude/screens/onboard/onboarding.dart';
+import 'package:rude/services/environment_strings.dart';
 import 'package:rude/util/utils.dart';
+import 'package:wiredash/wiredash.dart';
 
 void main() async{
   await Util.initializeApp();
@@ -19,6 +21,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final _navigatorKey = GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
     return LitAuthInit(
@@ -28,23 +31,32 @@ class _MyAppState extends State<MyApp> {
         apple: true,
         twitter: true,
       ),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          textTheme: GoogleFonts.alataTextTheme(
-            Theme.of(context).textTheme,
+      child: Wiredash(
+        options: WiredashOptionsData(
+          showDebugFloatingEntryPoint: false
+        ),
+        secret: EnvironmentConfig.WIREDASH_SECRET_ID,
+        projectId: EnvironmentConfig.WIREDASH_PROJECT_ID,
+        navigatorKey: _navigatorKey,
+              child: MaterialApp(
+                navigatorKey: _navigatorKey,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            textTheme: GoogleFonts.alataTextTheme(
+              Theme.of(context).textTheme,
+            ),
           ),
+          home: LitAuthState(
+            authenticated: App(),
+            unauthenticated: OnBoard(),
+          ),
+          routes: {
+            "/app": (_) => App(),
+            "/auth": (_) => AuthScreen(),
+            "/onboard": (_) => OnBoard(),
+          },
         ),
-        home: LitAuthState(
-          authenticated: App(),
-          unauthenticated: OnBoard(),
-        ),
-        routes: {
-          "/app": (_) => App(),
-          "/auth": (_) => AuthScreen(),
-          "/onboard": (_) => OnBoard(),
-        },
       ),
     );
   }
