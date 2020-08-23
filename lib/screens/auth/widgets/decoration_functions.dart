@@ -4,7 +4,7 @@ import 'package:rude/screens/config/palette.dart';
 InputDecoration registerInputDecoration({String hintText}) {
   return InputDecoration(
     contentPadding: const EdgeInsets.symmetric(vertical: 18.0),
-    hintStyle: const TextStyle(color: Colors.white, fontSize: 18),
+    hintStyle: TextStyle(fontSize: 18, color: Colors.white.withOpacity(0.5)),
     hintText: hintText,
     focusedBorder: const UnderlineInputBorder(
       borderSide: BorderSide(color: Colors.white, width: 2),
@@ -25,7 +25,7 @@ InputDecoration registerInputDecoration({String hintText}) {
 InputDecoration signInInputDecoration({String hintText}) {
   return InputDecoration(
     contentPadding: const EdgeInsets.symmetric(vertical: 18.0),
-    hintStyle: const TextStyle(fontSize: 18, color: Colors.white),
+    hintStyle: TextStyle(fontSize: 18, color: Colors.white.withOpacity(0.5)),
     hintText: hintText,
     focusedBorder: const UnderlineInputBorder(
       borderSide: BorderSide(width: 2, color: Palette.lightGolden),

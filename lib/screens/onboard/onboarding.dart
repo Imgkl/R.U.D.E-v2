@@ -34,7 +34,7 @@ class _OnBoardState extends State<OnBoard> {
             padding: const EdgeInsets.only(right: 8.0, left: 2),
             child: Text(
               "Okay, I'll say this right off the bat, This app can be rude...",
-              style: TextStyle(fontSize: 82, color: Color(0xffC29543)),
+              style: TextStyle(fontSize: 72, color: Color(0xffC29543)),
             ),
           )
         ],
