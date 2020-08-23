@@ -71,7 +71,10 @@ class SignInBar extends StatelessWidget {
           ),
           Expanded(
             child: Center(
-              child: _LoadingIndicator(isLoading: isLoading),
+              child: _LoadingIndicator(
+                isLoading: isLoading,
+                name: label,
+              ),
             ),
           ),
           _RoundContinueButton(
@@ -87,9 +90,11 @@ class _LoadingIndicator extends StatelessWidget {
   const _LoadingIndicator({
     Key key,
     @required this.isLoading,
+    this.name,
   }) : super(key: key);
 
   final bool isLoading;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -97,9 +102,12 @@ class _LoadingIndicator extends StatelessWidget {
       constraints: const BoxConstraints(maxWidth: 100),
       child: Visibility(
         visible: isLoading,
-        child: const LinearProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Palette.lightGolden),
-          backgroundColor: Color(0xff373846),
+        child: LinearProgressIndicator(
+          valueColor: (name == "Sign In")
+              ? AlwaysStoppedAnimation<Color>(Palette.lightGolden)
+              : AlwaysStoppedAnimation<Color>(Color(0xff373846)),
+          backgroundColor:
+              (name == "Sign In") ? Color(0xff373846) : Palette.darkGolden,
         ),
       ),
     );
