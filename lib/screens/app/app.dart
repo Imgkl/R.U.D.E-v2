@@ -8,6 +8,7 @@ import 'package:rude/services/firestore_service.dart';
 import 'package:rude/services/shared_pref.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:wiredash/wiredash.dart';
 
 class App extends StatefulWidget {
   @override
@@ -47,8 +48,12 @@ class _AppState extends State<App> {
         setState(() {
           uid = value.user.uid;
         });
-        FirestoreService(uid: value.user.uid)
-            .updateUserProfile(value.user.displayName, value.user.email, value.user.photoUrl);
+        LocalStorage.setEmail(value.user.email);
+        Wiredash.of(context).setUserProperties(
+          userEmail: value.user.email,
+        );
+        FirestoreService(uid: value.user.uid).updateUserProfile(
+            value.user.displayName, value.user.email, value.user.photoUrl);
       },
       empty: (_) {},
       initializing: (_) {},
@@ -56,18 +61,19 @@ class _AppState extends State<App> {
     super.didChangeDependencies();
   }
 
-  upDateData(){
+  upDateData() {
     LocalStorage.setTimeInterval(this.val);
-    Firestore.instance.collection("user-profiles").document(uid).updateData(
-      {
-        "timeInterval": this.val,
-      }
-    );
+    Firestore.instance.collection("user-profiles").document(uid).updateData({
+      "timeInterval": this.val,
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(uid: uid,),
+      appBar: CustomAppBar(
+        uid: uid,
+      ),
       backgroundColor: Color(0xff373846),
       body: Column(
         mainAxisSize: MainAxisSize.max,
