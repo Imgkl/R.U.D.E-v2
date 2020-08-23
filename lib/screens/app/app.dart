@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -47,6 +48,13 @@ class _AppState extends State<App> {
     super.didChangeDependencies();
   }
 
+  upDateData(){
+    Firestore.instance.collection("user-profiles").document(uid).updateData(
+      {
+        "timeInterval": this.val,
+      }
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,6 +89,7 @@ class _AppState extends State<App> {
                         setState(() {
                           this.val = val;
                         });
+                        upDateData();
                       },
                     ),
                     Text(
