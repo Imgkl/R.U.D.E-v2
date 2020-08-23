@@ -48,6 +48,7 @@ dependencies:
   den_lineicons: ^0.0.3
   slimy_card: ^1.0.4
   overlay: ^0.0.1
+  flushbar: ^1.10.4
 
 dev_dependencies:
   flutter_test:

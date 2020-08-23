@@ -1,4 +1,5 @@
 import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:overlay/overlay.dart';
@@ -89,10 +90,21 @@ class _AppState extends State<App> {
                                 label: "Profile",
                                 icon: FontAwesomeIcons.user,
                               ),
-                              
                               SettingsTile(
                                 color: Colors.blue,
                                 callback: () {
+                                  Navigator.pop(context);
+                                  Future.delayed(Duration(seconds: 1));
+                                  Flushbar(
+                                    margin: EdgeInsets.all(8),
+                                    isDismissible: true,
+                                    borderRadius: 10,
+                                    flushbarStyle: FlushbarStyle.FLOATING,
+                                    flushbarPosition: FlushbarPosition.TOP,
+                                    message:
+                                        "You shaped like an Angry bird",
+                                    duration: Duration(seconds: 10),
+                                  )..show(context);
                                 },
                                 label: "Test notification",
                                 icon: FontAwesomeIcons.flask,
