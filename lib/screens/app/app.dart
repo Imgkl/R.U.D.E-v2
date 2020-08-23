@@ -58,7 +58,8 @@ class _AppState extends State<App> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "Settings",
@@ -68,11 +69,21 @@ class _AppState extends State<App> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   IconButton(
-                                      icon: Icon(FontAwesomeIcons.times, color: Colors.white),
+                                      icon: Icon(FontAwesomeIcons.times,
+                                          color: Colors.white),
                                       onPressed: () {
                                         Navigator.pop(context);
                                       })
                                 ],
+                              ),
+                              SettingsTile(
+                                color: Colors.yellow,
+                                callback: () {
+                                  Navigator.pop(context);
+                                  Wiredash.of(context).show();
+                                },
+                                label: "Feedback",
+                                icon: FontAwesomeIcons.comment,
                               ),
                               SettingsTile(
                                 color: Colors.red,
@@ -85,15 +96,6 @@ class _AppState extends State<App> {
                                 label: "Log out",
                                 icon: FontAwesomeIcons.powerOff,
                               ),
-                              SettingsTile(
-                                color: Colors.yellow,
-                                callback: () {
-                                  Navigator.pop(context);
-                                  Wiredash.of(context).show();
-                                },
-                                label: "Feedback",
-                                icon: FontAwesomeIcons.comment,
-                              )
                             ],
                           ),
                         ),
