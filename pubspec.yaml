@@ -45,6 +45,9 @@ dependencies:
   animations: ^1.1.2
   shared_preferences: ^0.5.10
   wiredash: ^0.2.0
+  den_lineicons: ^0.0.3
+  slimy_card: ^1.0.4
+  overlay: ^0.0.1
 
 dev_dependencies:
   flutter_test:
