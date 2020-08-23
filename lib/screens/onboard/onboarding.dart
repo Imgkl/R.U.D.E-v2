@@ -1,10 +1,7 @@
 import 'dart:math';
-import 'package:flutter/scheduler.dart';
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_swipe/PageHelpers/LiquidController.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:rude/screens/app/app.dart';
 
 class OnBoard extends StatefulWidget {
   final buildContext;
