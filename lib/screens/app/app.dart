@@ -16,6 +16,7 @@ class _AppState extends State<App> {
   TimeOfDay startTime = TimeOfDay(hour: 22, minute: 00);
   TimeOfDay endTime = TimeOfDay(hour: 9, minute: 00);
   int val = 1;
+  String uid;
 
   startTimeChanged(TimeOfDay newTime) {
     setState(() {
@@ -34,8 +35,11 @@ class _AppState extends State<App> {
     final user = context.watchSignedInUser();
     user.map(
       (value) async {
+        setState(() {
+          uid = value.user.uid;
+        });
         FirestoreService(uid: value.user.uid)
-            .updateUserProfile(value.user.displayName, value.user.email);
+            .updateUserProfile(value.user.displayName, value.user.email, value.user.photoUrl);
       },
       empty: (_) {},
       initializing: (_) {},
@@ -46,7 +50,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(uid: uid,),
       backgroundColor: Color(0xff373846),
       body: Column(
         mainAxisSize: MainAxisSize.max,

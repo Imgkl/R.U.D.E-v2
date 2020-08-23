@@ -10,10 +10,11 @@ import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   @override
+  final String uid;
   final Size preferredSize;
 
   CustomAppBar({
-    Key key,
+    Key key, this.uid,
   })  : preferredSize = Size.fromHeight(50.0),
         super(key: key);
 
@@ -88,7 +89,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                 Navigator.pop(context);
                                 CustomOverlay(
                                   context: context,
-                                  overlayWidget: ProfileCard(),
+                                  overlayWidget: ProfileCard(uid: widget.uid),
                                 );
                               },
                               label: "Profile",

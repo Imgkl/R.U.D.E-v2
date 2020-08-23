@@ -13,12 +13,12 @@ class FirestoreService {
       firestore.collection('user-profiles');
 
 
-  Future updateUserProfile(String name, String email) async {
+  Future updateUserProfile(String name, String email, String photoUrl) async {
     userProfilesCollection.document(uid).get().then((userData) async {
       if (userData.data == null) {
         await userProfilesCollection
             .document(uid)
-            .setData({'name': name, 'email': email});
+            .setData({'name': name, 'email': email, "photoUrl": photoUrl});
       } else if (userData.data["email"] == null) {
         await userProfilesCollection.document(uid).updateData({"email": email});
       }
