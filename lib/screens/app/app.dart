@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rude/common_widgets/app_bar.dart';
 import 'package:rude/common_widgets/rude_text.dart';
+import 'package:rude/services/firestore_service.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
+import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 
 class App extends StatefulWidget {
   @override
@@ -28,9 +30,23 @@ class _AppState extends State<App> {
   }
 
   @override
+  void didChangeDependencies() {
+    final user = context.watchSignedInUser();
+    user.map(
+      (value) async {
+        FirestoreService(uid: value.user.uid)
+            .updateUserProfile(value.user.displayName, value.user.email);
+      },
+      empty: (_) {},
+      initializing: (_) {},
+    );
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: CustomAppBar(),
+      appBar: CustomAppBar(),
       backgroundColor: Color(0xff373846),
       body: Column(
         mainAxisSize: MainAxisSize.max,
