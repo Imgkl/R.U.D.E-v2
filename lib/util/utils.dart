@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rude/services/push_notifications.dart';
+import 'package:rude/services/shared_pref.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Util {
@@ -9,7 +10,7 @@ class Util {
     WidgetsFlutterBinding.ensureInitialized();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    SharedPreferences.getInstance();
+    LocalStorage.initilize();
     PushNotificationService().initialise();
   }
 }

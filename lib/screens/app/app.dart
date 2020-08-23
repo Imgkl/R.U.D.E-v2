@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rude/common_widgets/app_bar.dart';
 import 'package:rude/common_widgets/rude_text.dart';
 import 'package:rude/services/firestore_service.dart';
+import 'package:rude/services/shared_pref.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 
@@ -32,6 +33,13 @@ class _AppState extends State<App> {
   }
 
   @override
+  void initState() {
+    LocalStorage.getTimeInterval();
+    print(LocalStorage.getTimeInterval());
+    super.initState();
+  }
+
+  @override
   void didChangeDependencies() {
     final user = context.watchSignedInUser();
     user.map(
@@ -49,6 +57,7 @@ class _AppState extends State<App> {
   }
 
   upDateData(){
+    LocalStorage.setTimeInterval(this.val);
     Firestore.instance.collection("user-profiles").document(uid).updateData(
       {
         "timeInterval": this.val,
@@ -76,7 +85,7 @@ class _AppState extends State<App> {
                       style: TextStyle(fontSize: 38, color: Colors.white),
                     ),
                     StepperSwipe(
-                      initialValue: 1,
+                      initialValue: LocalStorage.getTimeInterval(),
                       firstIncrementDuration: Duration(milliseconds: 100),
                       dragButtonColor: Color(0xffE2B778),
                       counterTextColor: Colors.black,
