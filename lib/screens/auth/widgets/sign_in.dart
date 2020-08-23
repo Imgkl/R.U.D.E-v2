@@ -84,10 +84,10 @@ class SignIn extends StatelessWidget {
                           context: context,
                           signInType: "apple",
                         ),
-                        ProviderButton(
-                          context: context,
-                          signInType: "twitter",
-                        ),
+                        // ProviderButton(
+                        //   context: context,
+                        //   signInType: "twitter",
+                        // ),
                       ],
                     ),
                     const Spacer(),
