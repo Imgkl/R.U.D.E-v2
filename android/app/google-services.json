@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "114203957369",
+    "firebase_url": "https://rude-bd158.firebaseio.com",
+    "project_id": "rude-bd158",
+    "storage_bucket": "rude-bd158.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114203957369:android:874f9d164b34e0646adca8",
+        "android_client_info": {
+          "package_name": "io.imgkl.rude"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114203957369-s499hej51asn6c5osnat62si7j3i2l1k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCikbG0XS7UAZ-m2ZK11FM0f7d5P-PMH6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114203957369-s499hej51asn6c5osnat62si7j3i2l1k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "114203957369-hn6f2snuqlo53aergvnlj61r522uvu8i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.imgkl.rude"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
