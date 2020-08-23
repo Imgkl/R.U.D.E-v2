@@ -1,15 +1,9 @@
 import 'package:day_night_time_picker/day_night_time_picker.dart';
-import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:overlay/overlay.dart';
 import 'package:rude/common_widgets/app_bar.dart';
 import 'package:rude/common_widgets/rude_text.dart';
-import 'package:rude/common_widgets/settings_tile.dart';
-import 'package:rude/screens/app/profile.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
-import 'package:lit_firebase_auth/lit_firebase_auth.dart';
-import 'package:wiredash/wiredash.dart';
 
 class App extends StatefulWidget {
   @override

@@ -5,9 +5,7 @@ import 'package:rude/common_widgets/wiredash_wrapper.dart';
 import 'package:rude/screens/app/app.dart';
 import 'package:rude/screens/auth/auth.dart';
 import 'package:rude/screens/onboard/onboarding.dart';
-import 'package:rude/services/environment_strings.dart';
 import 'package:rude/util/utils.dart';
-import 'package:wiredash/wiredash.dart';
 
 void main() async {
   await Util.initializeApp();
