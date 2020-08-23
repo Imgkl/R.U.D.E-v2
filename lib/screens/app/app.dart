@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rude/common_widgets/rude_text.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
+import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 
 class App extends StatefulWidget {
   @override
@@ -29,6 +30,15 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(icon: Icon(FontAwesomeIcons.signOutAlt), onPressed: (){
+            context.signOut();
+           Navigator.popAndPushNamed(context, "/onboard");})
+        ],
+      ),
       backgroundColor: Color(0xff373846),
       body: Column(
         mainAxisSize: MainAxisSize.max,

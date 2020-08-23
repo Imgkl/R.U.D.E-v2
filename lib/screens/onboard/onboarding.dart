@@ -126,7 +126,7 @@ class _OnBoardState extends State<OnBoard> {
                 ),
                 borderSide: BorderSide(color: Colors.black),
                 onPressed: () {
-                  Navigator.popAndPushNamed(context, "/app");
+                  Navigator.popAndPushNamed(context, "/auth");
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
