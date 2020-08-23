@@ -3,6 +3,7 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:overlay/overlay.dart';
+import 'package:package_info/package_info.dart';
 import 'package:rude/common_widgets/settings_tile.dart';
 import 'package:rude/screens/app/profile.dart';
 import 'package:wiredash/wiredash.dart';
@@ -25,8 +26,20 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
    String testNotification = "test";
 
+
+  PackageInfo packageInfo = PackageInfo(
+      version: 'Unknown', buildNumber: 'Unknown', packageName: "Unknown");
+
+  Future<void> _initPackageInfo() async {
+    final PackageInfo info = await PackageInfo.fromPlatform();
+    setState(() {
+      packageInfo = info;
+    });
+  }
+
   @override
   void initState() {
+    _initPackageInfo();
     Firestore.instance
         .collection('app-settings')
         .document('general')
@@ -54,7 +67,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   context: context,
                   builder: (context) {
                     return Container(
-                      height: 470,
+                      height: 500,
                       decoration: BoxDecoration(
                           color: Color(0xff373846),
                           borderRadius:
@@ -139,6 +152,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
                               label: "Log out",
                               icon: FontAwesomeIcons.powerOff,
                             ),
+                            Align(
+                              alignment: Alignment.center,
+                                                          child: Padding(
+                                padding: const EdgeInsets.only(top:10.0, bottom:10),
+                                child: Text("v ${packageInfo.version}",style: TextStyle(color: Colors.white,),),
+                              ),
+                            )
                           ],
                         ),
                       ),
