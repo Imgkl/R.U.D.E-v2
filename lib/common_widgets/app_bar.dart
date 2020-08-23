@@ -67,7 +67,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   context: context,
                   builder: (context) {
                     return Container(
-                      height: 500,
                       decoration: BoxDecoration(
                           color: Color(0xff373846),
                           borderRadius:
