@@ -3,6 +3,7 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:overlay/overlay.dart';
+import 'package:rude/common_widgets/app_bar.dart';
 import 'package:rude/common_widgets/rude_text.dart';
 import 'package:rude/common_widgets/settings_tile.dart';
 import 'package:rude/screens/app/profile.dart';
@@ -35,116 +36,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          IconButton(
-              icon: Icon(FontAwesomeIcons.cog),
-              onPressed: () {
-                //   context.signOut();
-                //  Navigator.popAndPushNamed(context, "/onboard");
-                showModalBottomSheet(
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    builder: (context) {
-                      return Container(
-                        height: 470,
-                        decoration: BoxDecoration(
-                            color: Color(0xff373846),
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(30))),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 28.0, horizontal: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Settings",
-                                    style: TextStyle(
-                                        fontSize: 34,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  IconButton(
-                                      icon: Icon(FontAwesomeIcons.times,
-                                          color: Colors.white),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      })
-                                ],
-                              ),
-                              SettingsTile(
-                                color: Colors.pink,
-                                callback: () {
-                                   Navigator.pop(context);
-                                   CustomOverlay(context: context,
-                                   overlayWidget: ProfileCard(),
-                                   );
-                                },
-                                label: "Profile",
-                                icon: FontAwesomeIcons.user,
-                              ),
-                              SettingsTile(
-                                color: Colors.blue,
-                                callback: () {
-                                  Navigator.pop(context);
-                                  Future.delayed(Duration(seconds: 1));
-                                  Flushbar(
-                                    margin: EdgeInsets.all(8),
-                                    isDismissible: true,
-                                    borderRadius: 10,
-                                    flushbarStyle: FlushbarStyle.FLOATING,
-                                    flushbarPosition: FlushbarPosition.TOP,
-                                    message:
-                                        "You shaped like an Angry bird",
-                                    duration: Duration(seconds: 10),
-                                  )..show(context);
-                                },
-                                label: "Test notification",
-                                icon: FontAwesomeIcons.flask,
-                              ),
-                              SettingsTile(
-                                color: Colors.green,
-                                callback: () {
-                                },
-                                label: "Privacy policy",
-                                icon: FontAwesomeIcons.file,
-                              ),
-                              SettingsTile(
-                                color: Colors.yellow,
-                                callback: () {
-                                  Navigator.pop(context);
-                                  Wiredash.of(context).show();
-                                },
-                                label: "Feedback",
-                                icon: FontAwesomeIcons.comment,
-                              ),
-                              SettingsTile(
-                                color: Colors.red,
-                                callback: () {
-                                  context.signOut();
-                                  Navigator.pop(context);
-                                  Navigator.popAndPushNamed(
-                                      context, "/onboard");
-                                },
-                                last: true,
-                                label: "Log out",
-                                icon: FontAwesomeIcons.powerOff,
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    });
-              }),
-        ],
-      ),
+     appBar: CustomAppBar(),
       backgroundColor: Color(0xff373846),
       body: Column(
         mainAxisSize: MainAxisSize.max,
