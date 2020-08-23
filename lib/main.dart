@@ -32,8 +32,17 @@ class _MyAppState extends State<MyApp> {
         twitter: true,
       ),
       child: Wiredash(
+        theme: WiredashThemeData(
+          primaryColor:  Color(0xffE5CA97),
+          secondaryColor:  Color(0xffd59a4f),
+          primaryBackgroundColor:  Color(0xff373846),
+          primaryTextColor: Colors.white,
+          secondaryBackgroundColor:  Color(0xff373846),
+          secondaryTextColor: Color(0xffC29543),
+        ),
         options: WiredashOptionsData(
-          showDebugFloatingEntryPoint: false
+          showDebugFloatingEntryPoint: false,
+          
         ),
         secret: EnvironmentConfig.WIREDASH_SECRET_ID,
         projectId: EnvironmentConfig.WIREDASH_PROJECT_ID,

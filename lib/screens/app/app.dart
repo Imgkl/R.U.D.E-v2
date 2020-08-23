@@ -2,8 +2,10 @@ import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rude/common_widgets/rude_text.dart';
+import 'package:rude/common_widgets/settings_tile.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:wiredash/wiredash.dart';
 
 class App extends StatefulWidget {
   @override
@@ -34,9 +36,70 @@ class _AppState extends State<App> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          IconButton(icon: Icon(FontAwesomeIcons.signOutAlt), onPressed: (){
-            context.signOut();
-           Navigator.popAndPushNamed(context, "/onboard");})
+          IconButton(
+              icon: Icon(FontAwesomeIcons.cog),
+              onPressed: () {
+                //   context.signOut();
+                //  Navigator.popAndPushNamed(context, "/onboard");
+                showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (context) {
+                      return Container(
+                        height: 230,
+                        decoration: BoxDecoration(
+                            color: Color(0xff373846),
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(30))),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 28.0, horizontal: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Settings",
+                                    style: TextStyle(
+                                        fontSize: 34,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  IconButton(
+                                      icon: Icon(FontAwesomeIcons.times, color: Colors.white),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      })
+                                ],
+                              ),
+                              SettingsTile(
+                                color: Colors.red,
+                                callback: () {
+                                  context.signOut();
+                                  Navigator.pop(context);
+                                  Navigator.popAndPushNamed(
+                                      context, "/onboard");
+                                },
+                                label: "Log out",
+                                icon: FontAwesomeIcons.powerOff,
+                              ),
+                              SettingsTile(
+                                color: Colors.yellow,
+                                callback: () {
+                                  Navigator.pop(context);
+                                  Wiredash.of(context).show();
+                                },
+                                label: "Feedback",
+                                icon: FontAwesomeIcons.comment,
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              }),
         ],
       ),
       backgroundColor: Color(0xff373846),
@@ -50,7 +113,9 @@ class _AppState extends State<App> {
                 child: Column(
                   children: [
                     Text(
-                     val!=0? "I'll disturb you, every": "Didn't ask for your IQ",
+                      val != 0
+                          ? "I'll disturb you, every"
+                          : "Didn't ask for your IQ",
                       style: TextStyle(fontSize: 38, color: Colors.white),
                     ),
                     StepperSwipe(
@@ -79,7 +144,8 @@ class _AppState extends State<App> {
               if (val == 0) RudeMessage(text: "Dumb."),
               if (val == 1) RudeMessage(text: "Strong? You gonna regret this."),
               if (val == 2) RudeMessage(text: "Destroyed, you will be"),
-              if (val == 3) RudeMessage(text: "Steady decrease, just like ur life"),
+              if (val == 3)
+                RudeMessage(text: "Steady decrease, just like ur life"),
               if (val == 4) RudeMessage(text: "Meh"),
               if (val == 5) RudeMessage(text: "Why are you even doing this?"),
               if (val == 6) RudeMessage(text: "Ah! Rookie! Nooooob!"),
