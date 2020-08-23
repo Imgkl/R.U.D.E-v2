@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:rude/screens/auth/widgets/decoration_functions.dart';
@@ -78,6 +79,7 @@ class SignIn extends StatelessWidget {
                           context: context,
                           signInType: "google",
                         ),
+                        if(Platform.isIOS)
                         ProviderButton(
                           context: context,
                           signInType: "apple",
