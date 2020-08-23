@@ -1,8 +1,10 @@
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:overlay/overlay.dart';
 import 'package:rude/common_widgets/rude_text.dart';
 import 'package:rude/common_widgets/settings_tile.dart';
+import 'package:rude/screens/app/profile.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:wiredash/wiredash.dart';
@@ -46,7 +48,7 @@ class _AppState extends State<App> {
                     context: context,
                     builder: (context) {
                       return Container(
-                        height: 230,
+                        height: 470,
                         decoration: BoxDecoration(
                             color: Color(0xff373846),
                             borderRadius: BorderRadius.vertical(
@@ -77,6 +79,32 @@ class _AppState extends State<App> {
                                 ],
                               ),
                               SettingsTile(
+                                color: Colors.pink,
+                                callback: () {
+                                   Navigator.pop(context);
+                                   CustomOverlay(context: context,
+                                   overlayWidget: ProfileCard(),
+                                   );
+                                },
+                                label: "Profile",
+                                icon: FontAwesomeIcons.user,
+                              ),
+                              
+                              SettingsTile(
+                                color: Colors.blue,
+                                callback: () {
+                                },
+                                label: "Test notification",
+                                icon: FontAwesomeIcons.flask,
+                              ),
+                              SettingsTile(
+                                color: Colors.green,
+                                callback: () {
+                                },
+                                label: "Privacy policy",
+                                icon: FontAwesomeIcons.file,
+                              ),
+                              SettingsTile(
                                 color: Colors.yellow,
                                 callback: () {
                                   Navigator.pop(context);
@@ -93,6 +121,7 @@ class _AppState extends State<App> {
                                   Navigator.popAndPushNamed(
                                       context, "/onboard");
                                 },
+                                last: true,
                                 label: "Log out",
                                 icon: FontAwesomeIcons.powerOff,
                               ),
