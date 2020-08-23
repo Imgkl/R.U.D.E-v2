@@ -8,7 +8,7 @@ import 'package:rude/services/environment_strings.dart';
 import 'package:rude/util/utils.dart';
 import 'package:wiredash/wiredash.dart';
 
-void main() async{
+void main() async {
   await Util.initializeApp();
   runApp(
     MyApp(),
@@ -33,22 +33,22 @@ class _MyAppState extends State<MyApp> {
       ),
       child: Wiredash(
         theme: WiredashThemeData(
-          primaryColor:  Color(0xffE5CA97),
-          secondaryColor:  Color(0xffd59a4f),
-          primaryBackgroundColor:  Color(0xff373846),
+          primaryColor: Color(0xffE5CA97),
+          secondaryColor: Color(0xffd59a4f),
+          dividerColor: Color(0xffffffff),
+          primaryBackgroundColor: Color(0xff373846),
           primaryTextColor: Colors.white,
-          secondaryBackgroundColor:  Color(0xff373846),
+          secondaryBackgroundColor: Color(0xff0e0d10),
           secondaryTextColor: Color(0xffC29543),
         ),
         options: WiredashOptionsData(
           showDebugFloatingEntryPoint: false,
-          
         ),
         secret: EnvironmentConfig.WIREDASH_SECRET_ID,
         projectId: EnvironmentConfig.WIREDASH_PROJECT_ID,
         navigatorKey: _navigatorKey,
-              child: MaterialApp(
-                navigatorKey: _navigatorKey,
+        child: MaterialApp(
+          navigatorKey: _navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             visualDensity: VisualDensity.adaptivePlatformDensity,
