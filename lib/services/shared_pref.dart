@@ -22,7 +22,7 @@ class LocalStorage {
 
   static getTimeInterval() {
     var status =
-        prefs.getInt("timeInterval") != null ? prefs.getInt("timeInterval") : "1";
+        prefs.getInt("timeInterval") != null ? prefs.getInt("timeInterval") : 1;
     return status;
   }
 
