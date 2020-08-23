@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:rude/common_widgets/wiredash_wrapper.dart';
 import 'package:rude/screens/app/app.dart';
 import 'package:rude/screens/auth/auth.dart';
 import 'package:rude/screens/onboard/onboarding.dart';
@@ -31,21 +32,7 @@ class _MyAppState extends State<MyApp> {
         apple: true,
         twitter: true,
       ),
-      child: Wiredash(
-        theme: WiredashThemeData(
-          primaryColor: Color(0xffE5CA97),
-          secondaryColor: Color(0xffd59a4f),
-          dividerColor: Color(0xffffffff),
-          primaryBackgroundColor: Color(0xff373846),
-          primaryTextColor: Colors.white,
-          secondaryBackgroundColor: Color(0xff0e0d10),
-          secondaryTextColor: Color(0xffC29543),
-        ),
-        options: WiredashOptionsData(
-          showDebugFloatingEntryPoint: false,
-        ),
-        secret: EnvironmentConfig.WIREDASH_SECRET_ID,
-        projectId: EnvironmentConfig.WIREDASH_PROJECT_ID,
+      child: WireDashWrapper(
         navigatorKey: _navigatorKey,
         child: MaterialApp(
           navigatorKey: _navigatorKey,
