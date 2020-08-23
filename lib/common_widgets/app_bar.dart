@@ -22,6 +22,23 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
+   String testNotification = "test";
+
+  @override
+  void initState() {
+    Firestore.instance
+        .collection('app-settings')
+        .document('general')
+        .get()
+        .then((ds) {
+      setState(() {
+        this.testNotification = ds.data["testNotification"];
+        print(this.testNotification);
+      });
+    });
+    super.initState();
+  }
+
  
   @override
   Widget build(BuildContext context) {
@@ -89,7 +106,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                   borderRadius: 10,
                                   flushbarStyle: FlushbarStyle.FLOATING,
                                   flushbarPosition: FlushbarPosition.TOP,
-                                  message: "You look like a dumb angry bird",
+                                  message: testNotification,
                                   duration: Duration(seconds: 10),
                                 )..show(context);
                               },
