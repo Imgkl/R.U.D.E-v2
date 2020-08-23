@@ -15,7 +15,8 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   final Size preferredSize;
 
   CustomAppBar({
-    Key key, this.uid,
+    Key key,
+    this.uid,
   })  : preferredSize = Size.fromHeight(50.0),
         super(key: key);
 
@@ -24,8 +25,7 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-   String testNotification = "test";
-
+  String testNotification = "test";
 
   PackageInfo packageInfo = PackageInfo(
       version: 'Unknown', buildNumber: 'Unknown', packageName: "Unknown");
@@ -52,7 +52,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
     super.initState();
   }
 
- 
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -153,9 +152,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
                             ),
                             Align(
                               alignment: Alignment.center,
-                                                          child: Padding(
-                                padding: const EdgeInsets.only(top:10.0, bottom:10),
-                                child: Text("v ${packageInfo.version}",style: TextStyle(color: Colors.white,),),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 10.0, bottom: 10),
+                                child: Text(
+                                  "v ${packageInfo.version}",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
                             )
                           ],
