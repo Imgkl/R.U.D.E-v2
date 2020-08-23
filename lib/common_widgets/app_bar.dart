@@ -10,7 +10,6 @@ import 'package:wiredash/wiredash.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
-  @override
   final String uid;
   final Size preferredSize;
 
