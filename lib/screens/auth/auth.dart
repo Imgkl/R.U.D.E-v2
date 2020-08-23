@@ -37,6 +37,7 @@ class _AuthScreenState extends State<AuthScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xff373846),
       body: LitAuth.custom(
         errorNotification: const NotificationConfig(
