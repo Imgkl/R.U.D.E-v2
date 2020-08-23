@@ -33,7 +33,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
         .then((ds) {
       setState(() {
         this.testNotification = ds.data["testNotification"];
-        print(this.testNotification);
       });
     });
     super.initState();
