@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:rude/common_widgets/wiredash_wrapper.dart';
 import 'package:rude/screens/app/app.dart';
+import 'package:rude/screens/app/settings/settings.dart';
 import 'package:rude/screens/auth/auth.dart';
 import 'package:rude/screens/onboard/onboarding.dart';
 import 'package:rude/util/utils.dart';
@@ -47,6 +48,7 @@ class _MyAppState extends State<MyApp> {
           ),
           routes: {
             "/app": (_) => App(),
+            "/settings": (_) => Settings(),
             "/auth": (_) => AuthScreen(),
             "/onboard": (_) => OnBoard(),
           },
