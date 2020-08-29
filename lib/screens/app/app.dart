@@ -83,10 +83,11 @@ class _AppState extends State<App> {
             children: [
               Center(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       val != 0
-                          ? "I'll disturb you, every"
+                          ? "Every Hour You'll Get"
                           : "Didn't ask for your IQ",
                       style: TextStyle(fontSize: 38, color: Colors.white),
                     ),
@@ -108,20 +109,20 @@ class _AppState extends State<App> {
                       },
                     ),
                     Text(
-                      val == 0 ? "" : val == 1 ? "Hour" : "Hours",
+                      val == 0 ? "" : val == 1 ? "Notification" : "Notifications",
                       style: TextStyle(fontSize: 42, color: Colors.white),
                     ),
                   ],
                 ),
               ),
-              if (val == 0) RudeMessage(text: "Dumb."),
-              if (val == 1) RudeMessage(text: "Strong? You gonna regret this."),
-              if (val == 2) RudeMessage(text: "Destroyed, you will be"),
+              if (val == 6) RudeMessage(text: "Gonna crush you, just like you crushed your parents hope."),
+              if (val == 5) RudeMessage(text: "Strong? You gonna regret this."),
+              if (val == 4) RudeMessage(text: "Destroyed, you will be"),
               if (val == 3)
-                RudeMessage(text: "Steady decrease, just like ur life"),
-              if (val == 4) RudeMessage(text: "Meh"),
-              if (val == 5) RudeMessage(text: "Why are you even doing this?"),
-              if (val == 6) RudeMessage(text: "Ah! Rookie! Nooooob!"),
+                RudeMessage(text: "Now we are talking!"),
+              if (val == 2) RudeMessage(text: "Meh"),
+              if (val == 1) RudeMessage(text: "Why are you even doing this?"),
+              if (val == 0) RudeMessage(text: "Dumb."),
             ],
           ),
         ],

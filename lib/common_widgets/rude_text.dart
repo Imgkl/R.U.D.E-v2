@@ -37,6 +37,7 @@ class _RudeMessageState extends State<RudeMessage> {
         duration: Duration(seconds: 1),
         opacity: showWidget,
             child: Container(
+              height: 100,
               child: Center(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,6 +52,7 @@ class _RudeMessageState extends State<RudeMessage> {
                     padding: const EdgeInsets.only(left: 15.0),
                     child: Text(
                       widget.text ?? "",
+                      textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 24),
                     ),
                   ),
