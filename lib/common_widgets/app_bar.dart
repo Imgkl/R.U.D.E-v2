@@ -6,8 +6,8 @@ import 'package:overlay/overlay.dart';
 import 'package:package_info/package_info.dart';
 import 'package:rude/common_widgets/settings_tile.dart';
 import 'package:rude/screens/app/profile.dart';
+import 'package:rude/screens/app/settings/settings.dart';
 import 'package:wiredash/wiredash.dart';
-import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   final String uid;
@@ -60,113 +60,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
         IconButton(
             icon: Icon(FontAwesomeIcons.cog),
             onPressed: () {
-              showModalBottomSheet(
-                  backgroundColor: Colors.transparent,
-                  context: context,
-                  builder: (context) {
-                    return Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xff373846),
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(30))),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 28.0, horizontal: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Settings",
-                                  style: TextStyle(
-                                      fontSize: 34,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                IconButton(
-                                    icon: Icon(FontAwesomeIcons.times,
-                                        color: Colors.white),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    })
-                              ],
-                            ),
-                            SettingsTile(
-                              color: Colors.pink,
-                              callback: () {
-                                Navigator.pop(context);
-                                CustomOverlay(
-                                  context: context,
-                                  overlayWidget: ProfileCard(uid: widget.uid),
-                                );
-                              },
-                              label: "Profile",
-                              icon: FontAwesomeIcons.user,
-                            ),
-                            SettingsTile(
-                              color: Colors.blue,
-                              callback: () {
-                                Navigator.pop(context);
-                                Future.delayed(Duration(seconds: 1));
-                                Flushbar(
-                                  margin: EdgeInsets.all(8),
-                                  isDismissible: true,
-                                  borderRadius: 10,
-                                  flushbarStyle: FlushbarStyle.FLOATING,
-                                  flushbarPosition: FlushbarPosition.TOP,
-                                  message: testNotification,
-                                  duration: Duration(seconds: 10),
-                                )..show(context);
-                              },
-                              label: "Test notification",
-                              icon: FontAwesomeIcons.flask,
-                            ),
-                            SettingsTile(
-                              color: Colors.green,
-                              callback: () {},
-                              label: "Privacy policy",
-                              icon: FontAwesomeIcons.file,
-                            ),
-                            SettingsTile(
-                              color: Colors.yellow,
-                              callback: () {
-                                Navigator.pop(context);
-                                Wiredash.of(context).show();
-                              },
-                              label: "Feedback",
-                              icon: FontAwesomeIcons.comment,
-                            ),
-                            SettingsTile(
-                              color: Colors.red,
-                              callback: () {
-                                context.signOut();
-                                Navigator.pop(context);
-                                Navigator.popAndPushNamed(context, "/onboard");
-                              },
-                              last: true,
-                              label: "Log out",
-                              icon: FontAwesomeIcons.powerOff,
-                            ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 10.0, bottom: 10),
-                                child: Text(
-                                  "v ${packageInfo.version}",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  });
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Settings(
+                    uid: widget.uid,
+                    testNotification: testNotification,
+                  ),
+                ),
+              );
             }),
       ],
     );
