@@ -1,13 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:overlay/overlay.dart';
 import 'package:package_info/package_info.dart';
-import 'package:rude/common_widgets/settings_tile.dart';
-import 'package:rude/screens/app/profile.dart';
 import 'package:rude/screens/app/settings/settings.dart';
-import 'package:wiredash/wiredash.dart';
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   final String uid;
