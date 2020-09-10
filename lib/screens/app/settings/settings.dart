@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:overlay/overlay.dart';
 import 'package:rude/screens/app/profile.dart';
 import 'package:rude/screens/app/settings/rating.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wiredash/wiredash.dart';
 
 class Settings extends StatefulWidget {
@@ -127,7 +128,10 @@ class _SettingsState extends State<Settings>
                         iconColor: Colors.green,
                         label: "Privacy Policy",
                         icon: FontAwesomeIcons.file,
-                        callback: () {},
+                        callback: () {
+                          launch("https://rude-0.flycricket.io/privacy.html",
+                              forceSafariVC: true, forceWebView: true);
+                        },
                       ),
                       SettingsTile(
                         iconColor: Colors.cyan,
@@ -187,11 +191,9 @@ class SettingsTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xffE5CA97),
-          Color(0xffd59a4f)
-          ]),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Color(0xffE5CA97), Color(0xffd59a4f)]),
           borderRadius: BorderRadius.circular(10),
         ),
         height: 150,
