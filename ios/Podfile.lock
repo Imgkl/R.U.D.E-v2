@@ -334,6 +334,8 @@ PODS:
     - FirebaseCore (~> 6.6)
     - GTMSessionFetcher/Core (~> 1.1)
   - Flutter (1.0.0)
+  - flutter_local_notifications (0.0.1):
+    - Flutter
   - google_sign_in (0.0.1):
     - Flutter
     - GoogleSignIn (~> 5.0)
@@ -424,6 +426,7 @@ DEPENDENCIES:
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
@@ -478,6 +481,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
   google_sign_in:
     :path: ".symlinks/plugins/google_sign_in/ios"
   package_info:
@@ -513,6 +518,7 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 29543feb343b09546ab3aa04d008ee8595b43c44
   FirebaseStorage: f4f39ae834a7145963b913f54e2f24a9db1d8fac
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_local_notifications: 9e4738ce2471c5af910d961a6b7eadcf57c50186
   google_sign_in: 6bd214b9c154f881422f5fe27b66aaa7bbd580cc
   GoogleAppMeasurement: 67458367830514fb20fd9e233496f1eef9d90185
   GoogleDataTransport: 672fb0ce96fe7f7f31d43672fca62ad2c9c86f7b
